@@ -295,6 +295,5 @@ make_button(left_frame, "Add", add_user, "#2ecc71").grid(row=6, column=0, pady=8
 make_button(left_frame, "Update", update_user, "#f1c40f", fg="black").grid(row=6, column=1, pady=8, padx=5)
 make_button(left_frame, "Delete", delete_user, "#e74c3c").grid(row=7, column=0, pady=8, padx=5)
 make_button(left_frame, "Load", display_users, "#3498db").grid(row=7, column=1, pady=8, padx=5)
-
 display_users()
 root.mainloop()

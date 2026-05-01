@@ -274,10 +274,27 @@ search_entry.bind("<KeyRelease>", live_search)
 # =========================
 # BUTTONS
 # =========================
-tk.Button(left_frame, text="Add", command=add_user, bg="green", fg="white", width=10).grid(row=6, column=0)
-tk.Button(left_frame, text="Update", command=update_user, bg="orange", fg="white", width=10).grid(row=6, column=1)
-tk.Button(left_frame, text="Delete", command=delete_user, bg="red", fg="white", width=10).grid(row=7, column=0)
-tk.Button(left_frame, text="Load", command=display_users, bg="blue", fg="white", width=10).grid(row=7, column=1)
+def make_button(parent, text, command, bg, fg="white"):
+    return tk.Button(
+        parent,
+        text=text,
+        command=command,
+        bg=bg,
+        fg=fg,
+        activebackground="#34495e",
+        activeforeground="white",
+        relief="flat",
+        bd=0,
+        padx=10,
+        pady=6,
+        font=("Segoe UI", 10, "bold"),
+        cursor="hand2"
+    )
+
+make_button(left_frame, "Add", add_user, "#2ecc71").grid(row=6, column=0, pady=8, padx=5)
+make_button(left_frame, "Update", update_user, "#f1c40f", fg="black").grid(row=6, column=1, pady=8, padx=5)
+make_button(left_frame, "Delete", delete_user, "#e74c3c").grid(row=7, column=0, pady=8, padx=5)
+make_button(left_frame, "Load", display_users, "#3498db").grid(row=7, column=1, pady=8, padx=5)
 
 display_users()
 root.mainloop()

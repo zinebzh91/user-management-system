@@ -21,19 +21,31 @@ except Exception as e:
 root = tk.Tk()
 root.title("Advanced User Management System")
 root.geometry("1000x600")
-root.configure(bg="#1e1e2f")
-
+root.configure(bg="#f4f6f9")
 tk.Label(root, text="USER MANAGEMENT SYSTEM",
-         font=("Arial", 18, "bold"),
-         bg="#1e1e2f", fg="white").pack(pady=10)
+         font=("Arial", 22, "bold"),
+         bg="#f4f6f9",
+         fg="#2c3e50").pack(pady=15)
 
 # =========================
 # FRAMES
 # =========================
-left_frame = tk.Frame(root, bg="#2b2b40", padx=10, pady=10)
+left_frame = tk.Frame(
+    root,
+    bg="#2c3e50",   
+    padx=15,
+    pady=15,
+    bd=0
+)
 left_frame.place(x=20, y=60, width=320, height=500)
 
-right_frame = tk.Frame(root, bg="#2b2b40", padx=10, pady=10)
+right_frame = tk.Frame(
+    root,
+    bg="#ecf0f1",  
+    padx=15,
+    pady=15,
+    bd=0
+)
 right_frame.place(x=360, y=60, width=620, height=500)
 
 # =========================
@@ -275,8 +287,5 @@ tk.Button(left_frame, text="Update", command=update_user, bg="orange", fg="white
 tk.Button(left_frame, text="Delete", command=delete_user, bg="red", fg="white", width=10).grid(row=7, column=0)
 tk.Button(left_frame, text="Load", command=display_users, bg="blue", fg="white", width=10).grid(row=7, column=1)
 
-# =========================
-# INIT
-# =========================
 display_users()
 root.mainloop()

@@ -153,21 +153,29 @@ def add_user():
     if not validate():
         return
 
-    if collection.find_one({"phone": phone_entry.get()}):
+    phone = phone_entry.get()
+
+    # check duplicate phone
+    if collection.find_one({"phone": phone}):
         messagebox.showerror("Error", "Phone already exists")
         return
 
-    collection.insert_one({
-        "first_name": first_entry.get(),
-        "last_name": last_entry.get(),
-        "birth_date": birth_entry.get(),
-        "birth_place": place_entry.get(),
-        "phone": phone_entry.get()
-    })
+    user = {
+        "first_name": first_entry.get().strip(),
+        "last_name": last_entry.get().strip(),
+        "birth_date": birth_entry.get().strip(),
+        "birth_place": place_entry.get().strip(),
+        "phone": phone
+    }
 
-    display_users()
-    clear()
-    messagebox.showinfo("Success", "User added")
+    try:
+        collection.insert_one(user)
+        display_users()
+        clear()
+        messagebox.showinfo("Success", "User added successfully")
+
+    except Exception as e:
+        messagebox.showerror("Database Error", str(e))
 
 # =========================
 # SELECT
